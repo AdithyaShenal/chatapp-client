@@ -17,7 +17,7 @@ const SideBar = () => {
   const fetchFriends = () => {
     return axios
       .get<FriendProp[]>(
-        `http://localhost:3000/api/messages/conversations/${authState?.username}`
+        `https://chatapp-server-n84z.onrender.com/api/messages/conversations/${authState?.username}`
       )
       .then((res) => res.data);
   };

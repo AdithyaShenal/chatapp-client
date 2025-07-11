@@ -24,7 +24,7 @@ const ChatBody = ({ username }: Props) => {
   const fetchMessages = () => {
     return axios
       .get<MessageProps[]>(
-        `http://localhost:3000/api/messages/${username}/${activeFriend}`
+        `https://chatapp-server-n84z.onrender.com/api/messages/${username}/${activeFriend}`
       )
       .then((res) => res.data);
   };

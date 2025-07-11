@@ -20,7 +20,7 @@ const SearchPeople = () => {
     queryKey: ["user-search", query],
     queryFn: () => {
       return axios
-        .get<User[]>("http://localhost:3000/api/search", {
+        .get<User[]>("https://chatapp-server-n84z.onrender.com/api/search", {
           params: { q: query },
         })
         .then((res) => res.data);

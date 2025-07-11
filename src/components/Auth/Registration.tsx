@@ -44,13 +44,16 @@ const Registration = () => {
   const onSubmit = (data: formData) => {
     setIsSubmitting(true);
     axios
-      .post<RegistrationResponse>("http://localhost:3000/api/users", {
-        username: data.username,
-        password: data.password,
-        name: data.name,
-        email: data.email,
-        dateOfBirth: data.dateOfBirth,
-      })
+      .post<RegistrationResponse>(
+        "https://chatapp-server-n84z.onrender.com/api/users",
+        {
+          username: data.username,
+          password: data.password,
+          name: data.name,
+          email: data.email,
+          dateOfBirth: data.dateOfBirth,
+        }
+      )
       .then((res) => {
         setAuthState({
           _id: res.data._id,

@@ -15,7 +15,9 @@ const Profile = () => {
     queryKey: ["chat details", activeFriend],
     queryFn: () => {
       return axios
-        .get(`http://localhost:3000/api/users/${activeFriend}`)
+        .get(
+          `https://chatapp-server-n84z.onrender.com/api/users/${activeFriend}`
+        )
         .then((res) => res.data);
     },
     enabled: !!activeFriend,

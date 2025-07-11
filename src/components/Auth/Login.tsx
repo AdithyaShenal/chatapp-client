@@ -40,10 +40,13 @@ const Login = () => {
   const onSubmit = (data: formData) => {
     setIsSubmitting(true);
     axios
-      .post<LoginResponse>("http://localhost:3000/api/auth", {
-        username: data.username,
-        password: data.password,
-      })
+      .post<LoginResponse>(
+        "https://chatapp-server-n84z.onrender.com/api/auth",
+        {
+          username: data.username,
+          password: data.password,
+        }
+      )
       .then((res) => {
         if (res.data.validation === "successful") {
           setAuthState({
