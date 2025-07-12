@@ -2,10 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import type { User } from "../Auth/store";
+import { useNavigate } from "react-router-dom";
+import useActiveFriendStore from "../SideBar/store";
 
 const SearchPeople = () => {
   const [query, setQuery] = useState<string>("");
   const [input, setInput] = useState<string>("");
+  const navigate = useNavigate();
+  const { setActiveFriend } = useActiveFriendStore();
 
   const handleSearch = (input: string) => {
     if (input.trim()) setQuery(input.trim());
@@ -94,6 +98,10 @@ const SearchPeople = () => {
                     fontSize: "0.8rem",
                     borderRadius: "20px",
                     fontWeight: "500",
+                  }}
+                  onClick={() => {
+                    navigate("/app");
+                    setActiveFriend(user.username);
                   }}
                 >
                   Chat
