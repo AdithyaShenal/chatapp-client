@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import useActiveFriendStore from "./SideBar/store";
 import bg from "../assets/bg-chat.svg";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface MessageProps {
   sender: string;
@@ -20,6 +21,7 @@ const ChatBody = ({ username }: Props) => {
   const [currentMessage, setCurrentMessage] = useState<string>("");
   const [messageList, setMessageList] = useState<MessageProps[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const queryClient = useQueryClient();
 
   const fetchMessages = () => {
     return axios
@@ -62,6 +64,7 @@ const ChatBody = ({ username }: Props) => {
     setMessageList((prev) => [...prev, message]);
     socket.emit("send_private_message", message);
     setCurrentMessage("");
+    queryClient.invalidateQueries({ queryKey: ["friends"] });
   };
 
   return (

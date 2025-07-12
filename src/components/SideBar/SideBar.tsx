@@ -23,7 +23,7 @@ const SideBar = () => {
   };
 
   const { data: Friends } = useQuery<FriendProp[], Error>({
-    queryKey: ["friends", activeFriend],
+    queryKey: ["friends"],
     queryFn: fetchFriends,
     enabled: !!authState?._id,
   });

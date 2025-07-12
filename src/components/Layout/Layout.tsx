@@ -7,16 +7,16 @@ import { useEffect } from "react";
 const Layout = () => {
   const { authState } = useAuthStore();
 
-  // useEffect(() => {
-  //   socket.emit("register_user", authState?.username);
-  // }, [authState]);
-
   useEffect(() => {
-    if (authState?.username) {
-      console.log("✅ Emitting register_user", authState.username); // <-- Add for debug
-      socket.emit("register_user", authState.username);
-    }
-  }, [authState?.username]);
+    socket.emit("register_user", authState?.username);
+  }, [authState]);
+
+  // useEffect(() => {
+  //   if (authState?.username) {
+  //     console.log("✅ Emitting register_user", authState.username); // <-- Add for debug
+  //     socket.emit("register_user", authState.username);
+  //   }
+  // }, [authState?.username]);
 
   return (
     <div className="d-flex flex-column vh-100 ">
